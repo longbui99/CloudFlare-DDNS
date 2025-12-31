@@ -1,0 +1,9 @@
+cloudflare:
+  credentials:
+    api_token: "----"
+    api_key: "---"
+    email: "--@-.-"
+  zone: "----"
+  domains:
+    all:
+      name: "net.example.com"
