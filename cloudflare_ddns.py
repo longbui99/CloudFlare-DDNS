@@ -47,15 +47,8 @@ class IP:
         return res
 
     def load_ipv4(self):
-        response = requests.get('https://1.1.1.1/cdn-cgi/trace')
-        body = response.text.strip()
-        address = dict([x.split('=') for x in body.split("\n")])
-        if not os.path.exists(self.ipv4_path):
-            open(self.ipv4_path, 'w').close()
-        with open(self.ipv4_path, 'r') as f:
-            last_ipv4 = f.read().strip()
-            f.close()
-        self.ipv4_id = address['ip']
+        new_ip = requests.get('https://api.ipify.org').text.strip()
+        self.ipv4_id = new_ip
         
     def save_ip(self):
         checkpoint_time = datetime.now().astimezone(timezone("Asia/Saigon"))
